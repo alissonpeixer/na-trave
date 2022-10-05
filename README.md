@@ -8,8 +8,6 @@ Stacks used<br>
 
 ![My Skills](https://skillicons.dev/icons?i=react,nodejs,tailwindcss,typescript)
 
-[API used in project](https://jsonplaceholder.typicode.com)
-
 ---
 ### This project
 NUL
