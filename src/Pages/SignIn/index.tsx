@@ -1,31 +1,121 @@
-import { ArrowLeft } from 'phosphor-react'
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import { useNavigate } from "react-router-dom";
+
+import { ArrowLeft } from 'phosphor-react'
 
 import { Input } from '../../components/Input';
 import { Button } from '../../components/Button'
 import { Header } from '../../components/Header';
+import axios from 'axios';
+import { Alert, AlertTitle, Grow, Snackbar } from '@mui/material';
+import { useState } from 'react';
+import { useLocalStorage } from 'react-use';
 
-export const SignIn = () =>{
+import { SnackbarProvider, VariantType, useSnackbar } from 'notistack';
 
+type FormTypes = {
+  login: string;
+  password: string
+}
+
+
+let validationSchema = yup.object().shape({
+  login: yup.string().email('Formato de e-mail invalido !').required('* Digite seu e-mail'),
+  password: yup.string().required('* Digite sua senha')
+});
+
+export const SignIn = () => {
+  const [alertLogin, setAlertLogin] = useState(false)
+  const [auth, setAuth] = useLocalStorage('auth', false)
   const navigate = useNavigate()
 
-  const back = () =>{
+  const back = () => {
     navigate("/")
   }
 
-  const signup = () =>{
+  const signup = () => {
     navigate("/signup")
   }
+  const { enqueueSnackbar } = useSnackbar();
+
+  const formik = useFormik({
+
+    onSubmit: async (values: FormTypes) => {
+
+      await axios({
+        method: 'get',
+        baseURL: `${import.meta.env.VITE_API_HOST}`,
+        url: '/signin',
+        auth: {
+          username: values.login,
+          password: values.password
+        }
+      })
+        .then(res => {
+
+          setAuth(res.data)
+          setAlertLogin(true)
+
+          setInterval(() => {
+            window.location.href = '/hunches'
+            setAlertLogin(false)
+          }, 2000)
+
+        })
+        .catch(error => {
+          console.log(error)
+          enqueueSnackbar(`${error.message} `, {
+            variant: 'error',
+            persist: false
+          })
+
+
+          if (error.request.status === 403) {
+            console.log(error)
+            enqueueSnackbar(`${error.request.response} `, {
+              variant: 'error',
+              persist: false
+            })
+
+            return
+          }
+        })
+
+    },
+    initialValues: {
+      login: '',
+      password: ''
+    },
+    validationSchema
+  });
+
   return (
-    <main className="bg-white h-screen flex">
+
+    <main className="bg-white min-h-screen flex">
+
+      {alertLogin && (
+        <div className="flex fixed justify-center  w-screen  p-4">
+          <Grow
+            in={alertLogin}
+            style={{ transformOrigin: "0 3 0" }}
+            {...(alertLogin && { timeout: 1000 })}
+            className='border border-gray-100/[0.4] drop-shadow-2xl'
+          >
+            <Alert severity="success" className="w-[400px]">
+              <AlertTitle>Sucesso</AlertTitle>
+              Logado com sucesso boa sorte!<br></br>
+              <strong>Aguarde rediricionando para os palpites...</strong>
+            </Alert>
+          </Grow>
+        </div>
+      )}
+
+
       <div className="transition-all w-3/6 bg-csBlur bg-cover bg-right-bottom hidden md:block"></div>
 
       <div className="flex-1 px-6 xl:px-12 pt-8">
-        
-        <Header 
-          colorLogo='white'
-        />
-
+        <Header colorLogo="white" />
         <div className="flex items-center space-x-4 h-28 xl:ml-32">
           <ArrowLeft
             size={40}
@@ -37,24 +127,50 @@ export const SignIn = () =>{
             Entre na sua conta
           </h1>
         </div>
-        <form action="" className="flex flex-col justify-center space-y-5 xl:items-center">
-          <Input type="email" label="Login" name="login" />
-          <Input type="password" label="Password" name="password" />
+        <form
+          onSubmit={formik.handleSubmit}
+          className="flex flex-col justify-center space-y-5 xl:items-center"
+        >
+          <Input
+            type="email"
+            label="Login"
+            name="login"
+            error={formik.errors.login || ""}
+            onChange={formik.handleChange}
+            value={formik.values.login}
+            onBlur={formik.handleBlur}
+          />
+          <Input
+            type="password"
+            label="Password"
+            name="password"
+            error={formik.errors.password || ""}
+            onChange={formik.handleChange}
+            value={formik.values.password}
+            onBlur={formik.handleBlur}
+          />
 
-   
-          <Button colorText="white" colorBg="red-200" text="Entrar" />
-       
+          <Button
+            type="submit"
+            colorText="white"
+            colorBg="bg-red-200"
+            text="Entrar"
+          />
         </form>
 
         <div className="flex items-center justify-center h-16">
           <span className="text-black">
-            Não tem conta então{'   '}
-            <a onClick={signup} className="transition-all text-red-200/[0.5] font-bold hover:text-red-300 cursor-pointer">
+            Não tem conta então{"   "}
+            <a
+              onClick={signup}
+              className="transition-all text-red-200/[0.5] font-bold hover:text-red-300 cursor-pointer"
+            >
               Inscrever-se
             </a>
           </span>
         </div>
       </div>
     </main>
+
   );
 }
