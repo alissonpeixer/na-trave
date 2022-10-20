@@ -28,7 +28,7 @@ export const CardGameUser = ({ data, onChange }: any) => {
 
           <div className='uppercase'>{data.game.homeTeam}</div>
 
-          <img src={`/public/flags/${data.game.homeTeam}.png`} alt="" className="w-10" />
+          <img src={`/flags/${data.game.homeTeam}.png`} alt="" className="w-10" />
 
 
 
@@ -42,7 +42,7 @@ export const CardGameUser = ({ data, onChange }: any) => {
             {data.awayTeamScore}
           </div>
 
-          <img src={`/public/flags/${data.game.awayTeam}.png`} alt="" className="w-10" />
+          <img src={`/flags/${data.game.awayTeam}.png`} alt="" className="w-10" />
 
           <div className='uppercase'>{data.game.awayTeam}</div>
 
