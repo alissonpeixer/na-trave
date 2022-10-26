@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -16,8 +16,6 @@ import { Hunches } from "./Pages/Hunches";
 import { User } from "./Pages/User";
 import { Username } from "./Pages/User/Username";
 import { SnackbarProvider } from "notistack";
-import { Backdrop, CircularProgress } from "@mui/material";
-
 
 
 const router = createBrowserRouter([
@@ -33,8 +31,7 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp />
-  }
-  ,
+  },
   {
     path: '/hunches',
     element: <Hunches />
@@ -49,10 +46,15 @@ const router = createBrowserRouter([
   }
 ]);
 
+
+
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <SnackbarProvider maxSnack={3} autoHideDuration={1400}>
-      <RouterProvider router={router} />
+      {
+        <RouterProvider router={router} />
+      }
     </SnackbarProvider>
   </React.StrictMode>
-);
+)

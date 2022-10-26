@@ -27,8 +27,10 @@ let validationSchema = yup.object().shape({
 
 export const SignIn = () => {
   const [alertLogin, setAlertLogin] = useState(false)
-  const [auth, setAuth] = useLocalStorage('auth', false)
+  const [auth, setAuth] = useLocalStorage('auth')
   const navigate = useNavigate()
+
+
 
   const back = () => {
     navigate("/")
@@ -89,6 +91,10 @@ export const SignIn = () => {
     },
     validationSchema
   });
+
+
+
+
 
   return (
 
