@@ -1,5 +1,13 @@
 import axios from "axios"
 
+type ResTypes = {
+    valid: boolean,
+    name:string,
+    username: string,
+    id: string,
+    acessToken: string,
+}
+
 interface Props {
     acessToken: string,
     id: string,
@@ -8,6 +16,10 @@ interface Props {
 }
 
 export const getUserSession = async (params  : Props) => {
+    if(!params){
+        window.location.href = "/" 
+        return 
+    }
 
    await axios({
         method: 'get',
@@ -17,14 +29,15 @@ export const getUserSession = async (params  : Props) => {
             auth: `Bearer ${params.acessToken}`
         }
     })
-    .then((res) =>{
-        console.log(res)
-
-        return
+    .then((res )  =>{    
+        localStorage.setItem('session',res.data.valid)    
+         
+        return 
     })
     .catch((error) =>{
-        console.log(error)
-
+        localStorage.setItem('auth',JSON.stringify(false))
+        localStorage.setItem('session',JSON.stringify(false))  
+        window.location.href = "/" 
         alert('Sua sessão expirou!')
         return
     })

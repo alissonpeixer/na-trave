@@ -45,7 +45,7 @@ export const Hunches = () => {
   const navegation = useNavigate()
   const [currentDate, setDate] = useState(formatISO(new Date(2022, 10, 20)))
   const [auth]: any = useLocalStorage('auth')
-
+  const [session, setSession] = useState(false)
 
 
   const [hunches, fetchHunches] = useAsyncFn(async (authUser: LocalUser) => {
@@ -100,10 +100,9 @@ export const Hunches = () => {
 
   }, [currentDate])
 
+ 
 
-
-
-
+  
 
   return (
     <>

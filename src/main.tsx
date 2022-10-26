@@ -8,13 +8,13 @@ import {
 
 import "./index.css";
 
-import { Home } from "./Pages/Home";
-import { ErrorPage } from "./Pages/ErrorPage";
-import { SignIn } from "./Pages/SignIn";
-import { SignUp } from "./Pages/SignUp";
-import { Hunches } from "./Pages/Hunches";
-import { User } from "./Pages/User";
-import { Username } from "./Pages/User/Username";
+import { Home } from "./pages/Home";
+import { ErrorPage } from "./pages/ErrorPage";
+import { SignIn } from "./pages/SignIn";
+import { SignUp } from "./pages/SignUp";
+import { Hunches } from "./pages/Hunches";
+import { User } from "./pages/User";
+import { Username } from "./pages/User/Username";
 import { SnackbarProvider } from "notistack";
 
 
