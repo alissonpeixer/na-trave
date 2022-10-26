@@ -22,12 +22,14 @@ export const getUserSession = async (params  : Props) => {
     }
 
    await axios({
+
         method: 'get',
         baseURL: `${import.meta.env.VITE_API_HOST}`,
         url: '/u/auth',
         headers:{
             auth: `Bearer ${params.acessToken}`
         }
+        
     })
     .then((res )  =>{    
         localStorage.setItem('session',res.data.valid)    

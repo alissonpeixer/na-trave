@@ -94,7 +94,9 @@ export const Hunches = () => {
 
 
   useEffect(() => {
+    
     getUserSession(auth)
+
     gamesFetch({ gameTime: currentDate })
     fetchHunches(auth.username)
 
