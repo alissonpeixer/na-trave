@@ -118,12 +118,12 @@ export const SignUp = () => {
         )}
 
         <div className="transition-all w-3/6 bg-csBlur bg-cover bg-right-bottom hidden md:block"></div>
-
-        <div className="flex-1 px-6 xl:px-12 pt-8">
+        <div className='flex w-full justify-center'>
+        <div className=" px-6 xl:px-12 pt-8">
           <Header
             colorLogo='white'
           />
-          <div className="flex items-center space-x-4 h-28 2xl:ml-32">
+          <div className="flex items-center space-x-4 h-28">
 
             <ArrowLeft
               size={40}
@@ -218,6 +218,7 @@ export const SignUp = () => {
             </span>
 
           </div>
+        </div>
         </div>
       </main>
 
