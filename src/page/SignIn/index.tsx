@@ -27,8 +27,10 @@ let validationSchema = yup.object().shape({
 
 export const SignIn = () => {
   const [alertLogin, setAlertLogin] = useState(false)
-  const [auth, setAuth] = useLocalStorage('auth', false)
+  const [auth, setAuth] = useLocalStorage('auth')
   const navigate = useNavigate()
+
+
 
   const back = () => {
     navigate("/")
@@ -56,7 +58,7 @@ export const SignIn = () => {
 
           setAuth(res.data)
           setAlertLogin(true)
-
+          localStorage.setItem('session', JSON.stringify(true))
           setInterval(() => {
             window.location.href = '/hunches'
             setAlertLogin(false)
@@ -89,6 +91,10 @@ export const SignIn = () => {
     },
     validationSchema
   });
+
+
+
+
 
   return (
 

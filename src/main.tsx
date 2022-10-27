@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import {
   createBrowserRouter,
@@ -8,16 +8,14 @@ import {
 
 import "./index.css";
 
-import { Home } from "./Pages/Home";
-import { ErrorPage } from "./Pages/ErrorPage";
-import { SignIn } from "./Pages/SignIn";
-import { SignUp } from "./Pages/SignUp";
-import { Hunches } from "./Pages/Hunches";
-import { User } from "./Pages/User";
-import { Username } from "./Pages/User/Username";
+import { Home } from "./page/Home";
+import { ErrorPage } from "./page/ErrorPage";
+import { SignIn } from "./page/SignIn";
+import { SignUp } from "./page/SignUp";
+import { Hunches } from "./page/Hunches";
+import { User } from "./page/User";
+import { Username } from "./page/User/Username";
 import { SnackbarProvider } from "notistack";
-import { Backdrop, CircularProgress } from "@mui/material";
-
 
 
 const router = createBrowserRouter([
@@ -33,8 +31,7 @@ const router = createBrowserRouter([
   {
     path: '/signup',
     element: <SignUp />
-  }
-  ,
+  },
   {
     path: '/hunches',
     element: <Hunches />
@@ -49,10 +46,15 @@ const router = createBrowserRouter([
   }
 ]);
 
+
+
+
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
     <SnackbarProvider maxSnack={3} autoHideDuration={1400}>
-      <RouterProvider router={router} />
+      {
+        <RouterProvider router={router} />
+      }
     </SnackbarProvider>
   </React.StrictMode>
-);
+)

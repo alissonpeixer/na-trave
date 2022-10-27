@@ -10,14 +10,48 @@ Stacks used<br>
 
 ---
 ### This project
-NUL
-<br><br>
-[Project live demo](HULL)
+
+Objective to create Cup guesses, using method CRUD. Using the latest technologies.
 
 ---
+[Project live demo](https://na-trave.vercel.app/)
+<br><br>
 
+---
+# Clone my project in your PC
 
-##### This projet is created for to [Cordar.Me](https://codar.me/) course. 
+1. Frist clone project in your pc:
+    ```bash
+    git clone https://github.com/alissonpeixer/na-trave.git
+    ```
+2.  Go to directory:
+    ```bash
+    cd ~/na-trave
+    ```
+### - Run front end page:
+1.  To go run front end page:
+    ```bash
+    cd web ; npm install ; npm run dev
+    ```
+### - Run Back end server:
+1.  Em new bash pront paste in root folder (``~/na-trave``) :
+    ```bash
+    cd api ; npm install
+    ```
+2. Rename from `.env.example` to `.env`.
+3. Open to paste API URL (http://127.0.0.1:9901).
+
+</br>
+
+### After to run api and web server go to browser, paste to URL logal server:
+    http://127.0.0.1:5173/
+
+### It was just that!
+Good look! 😃
+
+---
+<br><br>
+##### This projet is created for to [Cordar.Me](https://codar.me/) course.
 ---
 ###### screenshot this project
 <!-- ![image]() -->
@@ -25,11 +59,13 @@ NUL
 
 ---
 
+
 <p align="center">
     <span class="copyright">Done with ❤️ by <a href="https://github.com/alissonpeixer">Alisson Peixer</a></span>
     <br><br><br>
    <img src="https://avatars.githubusercontent.com/u/48291580" width="100px" alt="picture to user">
 </p>
+
 
 ---
 

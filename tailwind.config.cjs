@@ -35,7 +35,7 @@ module.exports = {
       '6xl': ['58px', '66px'], 
     },
     backgroundImage: {
-      'csBlur': "url('/public/img/blur-fsc02.png')"
+      'csBlur': "url('/img/blur-fsc02.png')"
     }
   },
   plugins: [],

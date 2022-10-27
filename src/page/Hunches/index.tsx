@@ -11,6 +11,7 @@ import { useNavigate } from 'react-router-dom'
 import { ErrorPage } from '../ErrorPage'
 import { Backdrop, CircularProgress } from '@mui/material'
 
+
 type GameType = {
   id: string;
   awayTeam: number;
@@ -37,11 +38,14 @@ type LocalUser = {
 
 
 export const Hunches = () => {
+
+
+
   const navegation = useNavigate()
-
-
   const [currentDate, setDate] = useState(formatISO(new Date(2022, 10, 20)))
   const [auth]: any = useLocalStorage('auth')
+  const [session, setSession] = useState(false)
+
 
   const [hunches, fetchHunches] = useAsyncFn(async (authUser: LocalUser) => {
 
@@ -82,26 +86,22 @@ export const Hunches = () => {
     return res.data
   })
 
-  const isLoading = games.loading || hunches.loading
   const hasError = games.error || hunches.error
+  const isLoading = games.loading || hunches.loading
   const isDone = !isLoading && !hasError
 
 
-  useEffect(() => {
+
+  useEffect(() => {    
     gamesFetch({ gameTime: currentDate })
+
     fetchHunches(auth.username)
-
-
-
-    if (!auth) {
-      navegation('/')
-      return
-    }
-
 
   }, [currentDate])
 
+ 
 
+  
 
   return (
     <>

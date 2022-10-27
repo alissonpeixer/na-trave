@@ -3,6 +3,7 @@ import { UserCircle, SignOut, SignIn, House } from 'phosphor-react';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import { useLocalStorage } from 'react-use';
+import { getUserSession } from '../../util/session'
 
 import WHITELOGO from '/logo/logo-fundo-branco.svg'
 import REDLOGO from '/logo/logo-fundo-vermelho.svg'
@@ -40,6 +41,8 @@ export const Header = ({ colorLogo, colorBg, }: PropsHearder) => {
   }
 
   useEffect(() => {
+
+    getUserSession(auth)
 
     if (colorLogo === 'white') {
       setLogo(WHITELOGO)
