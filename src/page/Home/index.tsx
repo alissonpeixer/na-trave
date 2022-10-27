@@ -29,6 +29,7 @@ export const Home = () => {
     navigate("/hunches")
   }
 
+
   return (
     <>
       <Header

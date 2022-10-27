@@ -17,27 +17,33 @@ interface PropsHearder {
 export const Header = ({ colorLogo, colorBg, }: PropsHearder) => {
   const navegation = useNavigate()
   const [logoCurrent, setLogo] = useState('ESCOLGA UM PADRÂO DE COR')
-  const [auth, removeAuth]: any = useLocalStorage('auth', false)
-
+  const [auth, removeAuth]: any = useLocalStorage('auth')
+  const [session, removeSession]: any = useLocalStorage('session')
+  
   const navigator = useNavigate()
   const params = useParams()
   const location = useLocation();
 
   const goToHunches = () => {
     navegation('/hunches')
+    return
   }
 
   const home = () => {
     navigator('/')
+    return
   }
 
   const logout = () => {
     removeAuth(false)
+    removeSession(false)
     navigator('/')
+    return
   }
 
   const goToProfile = () => {
     navegation(`/user/${auth.username}`)
+    return
   }
 
   useEffect(() => {
