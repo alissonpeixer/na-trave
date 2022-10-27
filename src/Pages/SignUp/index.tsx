@@ -54,6 +54,7 @@ export const SignUp = () => {
         .then(res => {
           setAlertLogin(true)
           setAuth(res.data)
+          localStorage.setItem('session', JSON.stringify(true))
           setInterval(() => {
             window.location.href = '/hunches'
           }, 2000)

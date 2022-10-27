@@ -16,30 +16,58 @@ interface Props {
 }
 
 export const getUserSession = async (params  : Props) => {
-    if(!params){
-        window.location.href = "/" 
-        return 
-    }
+    const session = localStorage.getItem('session')
+    
 
-   await axios({
-        method: 'get',
-        baseURL: `${import.meta.env.VITE_API_HOST}`,
-        url: '/u/auth',
-        headers:{
-            auth: `Bearer ${params.acessToken}`
+   if(session === 'true'){
+
+        if(!params){
+            location.href = '/'
+            return
         }
-    })
-    .then((res )  =>{    
-        localStorage.setItem('session',res.data.valid)    
-         
-        return 
-    })
-    .catch((error) =>{
-        localStorage.setItem('auth',JSON.stringify(false))
-        localStorage.setItem('session',JSON.stringify(false))  
-        window.location.href = "/" 
-        alert('Sua sessão expirou!')
+
+        if(location.pathname === '/signin'  ){
+            location.href = '/hunches'
+            return
+        }
+        
+        if(location.pathname === '/signup'  ){
+            location.href = '/hunches'
+            return
+        }
+
+        await axios({
+            method: 'get',
+            baseURL: `${import.meta.env.VITE_API_HOST}`,
+            url: '/u/auth',
+            headers:{
+                auth: `Bearer ${params.acessToken}`
+            }
+        })
+        .then((res )  =>{    
+            localStorage.setItem('session',res.data.valid)    
+            
+            return 
+        })
+        .catch((error) =>{
+            localStorage.setItem('auth', JSON.stringify(false))
+            localStorage.setItem('session', JSON.stringify(false))
+            console.log(error)
+        
+            return
+        })
+
         return
-    })
+   }
+
+
+   localStorage.setItem('session', JSON.stringify(false))
+   localStorage.setItem('auth', JSON.stringify(false))
+
+   if(location.pathname === '/hunches' ){
+    location.href = '/'
+    return
+   }
 
 }
+

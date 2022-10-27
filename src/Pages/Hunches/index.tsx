@@ -11,7 +11,6 @@ import { useNavigate } from 'react-router-dom'
 import { ErrorPage } from '../ErrorPage'
 import { Backdrop, CircularProgress } from '@mui/material'
 
-import { getUserSession } from '../../util/session'
 
 type GameType = {
   id: string;
@@ -87,17 +86,15 @@ export const Hunches = () => {
     return res.data
   })
 
-  const isLoading = games.loading || hunches.loading
   const hasError = games.error || hunches.error
+  const isLoading = games.loading || hunches.loading
   const isDone = !isLoading && !hasError
 
 
 
-  useEffect(() => {
-    
-    getUserSession(auth)
-
+  useEffect(() => {    
     gamesFetch({ gameTime: currentDate })
+
     fetchHunches(auth.username)
 
   }, [currentDate])
