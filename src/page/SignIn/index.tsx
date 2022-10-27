@@ -127,7 +127,7 @@ export const SignIn = () => {
 
       <div className="flex-1 px-6 xl:px-12 pt-8">
         <Header colorLogo="white" />
-        <div className="flex items-center space-x-4 h-28 xl:ml-32">
+        <div className="flex items-center space-x-4 h-28 2xl:ml-32">
           <ArrowLeft
             size={40}
             weight="bold"
