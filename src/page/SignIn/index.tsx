@@ -165,7 +165,7 @@ export const SignIn = () => {
           <Button
             type="submit"
             colorText="white"
-            colorBg="bg-red-200"
+            colorBg="bg-red-200/[0.8] hover:bg-red-200"
             text={formik.isSubmitting ? 'Enviando...' : "Entrar"}
             disabled={formik.isSubmitting || !formik.isValid}
           />
