@@ -31,24 +31,24 @@ export const Home = () => {
 
 
   return (
-    <>
+    <div className="bg-csBlur bg-cover h-[90vh] flex flex-col  items-center justify-around   ">
       <Header
         colorLogo="wine"
       />
-      <main className="transition-all px-6 flex flex-col gap-10 items-center xl:flex-row pt-10 xl:pt-0 h-[90vh] pb-10">
-        <div className="transition-all xl:w-5/12 xl:flex xl:justify-center">
+      <main className="transition-all px-6 flex flex-col gap-10 items-center xl:flex-row pt-10 xl:pt-0  pb-10">
+        <div className="transition-all xl:w-8/12  xl:flex xl:justify-center ">
 
           <Grow in={true}>
             <img
               src={IMAGE}
               alt="Peoples"
-              className="transition-all w-[380px]   min-w-[100px] max-w-[600px] xl:w-[486] 2xl:w-[600px]"
+              className="transition-all w-[480px]   min-w-[100px] max-w-[600px] xl:w-[486] 2xl:w-[600px]"
             />
           </Grow>
 
         </div>
 
-        <div className="transition-all  space-y-16  flex flex-col  items-center ">
+        <div className="transition-all    space-y-24 flex flex-col  items-center ">
 
           <h1 className="transition-all  font-bold text-2xl text-center tracking-wide  sm:text-3xl xl:text-5xl">
             Dê o seu palpite na Copa do Mundo do Catar 2022!
@@ -70,14 +70,14 @@ export const Home = () => {
                   text="Criar minha conta"
                   colorBg="bg-white"
                   colorText="red-100"
-                  customClass="hover:text-white hover:bg-red-300"
+                  customClass="hover:text-white hover:bg-red-300 "
                   onClick={signUp}
                 />
                 <Button
                   text="Já tenho conta"
                   colorBg="none"
                   colorText="white"
-                  customClass="border border-white hover:border-red-200 hover:border-red-200 hover:bg-red-300"
+                  customClass="border border-white hover:border-red-200 hover:border-red-200 hover:bg-red-300 bg-red-100/[0.5] "
                   onClick={signIn}
                 />
               </>
@@ -86,11 +86,11 @@ export const Home = () => {
               text="Ver usuários"
               colorBg="none"
               colorText="white"
-              customClass="border border-white hover:border-red-200 hover:bg-red-300"
+              customClass="border border-white hover:border-red-200 hover:bg-red-300 bg-red-100/[0.5] "
               onClick={goToUsers} />
           </div>
         </div>
       </main>
-    </>
+    </div>
   );
 };
