@@ -70,13 +70,14 @@ export const Home = () => {
                   text="Criar minha conta"
                   colorBg="bg-white"
                   colorText="red-100"
+                  customClass="hover:text-white hover:bg-red-300"
                   onClick={signUp}
                 />
                 <Button
                   text="Já tenho conta"
                   colorBg="none"
                   colorText="white"
-                  customClass="border border-white"
+                  customClass="border border-white hover:border-red-200 hover:border-red-200 hover:bg-red-300"
                   onClick={signIn}
                 />
               </>
@@ -85,7 +86,7 @@ export const Home = () => {
               text="Ver usuários"
               colorBg="none"
               colorText="white"
-              customClass="border border-white"
+              customClass="border border-white hover:border-red-200 hover:bg-red-300"
               onClick={goToUsers} />
           </div>
         </div>
