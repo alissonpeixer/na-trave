@@ -50,8 +50,8 @@ Objective to create Cup guesses, using method CRUD. Using the latest technologie
 Good look! 😃
 
 ---
-<br><br>
-##### This projet is created for to [Cordar.Me](https://codar.me/) course.
+
+##### This projet is created for to [Cordar.Me](https://codar.me/) event.
 ---
 ###### screenshot this project
 <!-- ![image]() -->
