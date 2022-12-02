@@ -14,7 +14,7 @@ Stacks used<br>
 Objective to create Cup guesses, using method CRUD. Using the latest technologies.
 
 ---
-[Project live demo](https://na-trave.vercel.app/)
+[Project live demo](https://ntrave.vercel.app/)
 <br><br>
 [Link to API](https://github.com/alissonpeixer/na-trave-api)
 <br><br>
